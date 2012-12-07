@@ -1,4 +1,6 @@
 Kura
 ====
 
-Build and make Koji packages massively with ease
+Tag and build yum packages in Koji massively with ease
+
+
