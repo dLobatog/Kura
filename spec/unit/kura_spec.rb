@@ -12,5 +12,10 @@ describe 'kura' do
       output = capture_stdout { Kura.new }
       output.should == failure_message
     end
+
+    it "should not print any error message with a proper argument" do
+      output = capture_stdout { Kura.new("package.src.rpm") }
+      output.should == ""
+    end
   end
 end
