@@ -1,6 +1,17 @@
 h1. Kura "!https://travis-ci.org/eLobato/Kura.png!":https://travis-ci.org/eLobato/Kura
 ====
 
-Tag and build yum packages in Koji massively with ease
+h2. Tag and build yum packages in Koji massively with ease
 
+Ever been through the pain of having to build in koji packages with tens of
+dependencies? Fear no more. Invoke Kura and it will help you out.
 
+To build ONE package: 
+<pre> $ kura package-1.0.0-0.src.rpm --owner=someone --tags=tag1 tag2 </pre>
+If you don't specify any owner/tags, Kura will ask you for them for your package.
+
+To build several packages: 
+First, put them all in a directory.
+<pre> $ kura directory_with_packages --owner=someone --tags=tag1 tag2 </pre>
+If you don't specify any owner/tags, Kura will ask you for them for each of your packages.
+                                            
