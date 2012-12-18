@@ -1,13 +1,23 @@
 class PackageBuilder
   attr_reader :package, :owner, :tags, :name
 
-  def initialize(package, options = {})
-    @package = package
+  def initialize(package, owner = "", tags = {})
+    @package = File.basename(package)
     @name    = get_name
-    puts "Specify a package owner: "  
-    @owner = $stdin.gets
-    puts "Specify tags: Separate them with spaces"
-    @tags  = $stdin.gets.chomp.split
+    if owner.empty?
+      puts "Specify a package owner: "  
+      @owner = $stdin.gets 
+    else             
+      @owner = owner
+    end
+
+    if tags.empty?
+      puts "Specify tags: Separate them with spaces"
+      @tags  = $stdin.gets.chomp.split
+    else
+      @tags = tags
+    end
+    start_build
   end
 
   def get_name
@@ -15,8 +25,9 @@ class PackageBuilder
       puts "No specified version. 
             Package's name has to follow the format: name-0.0.0-0.src.rpm 
             where 0.0.0-0 is the version" 
+      exit
     else 
-      @package.split('-')[0..-3]
+      @package.split('-')[0..-3].join('-')
     end
   end
 
@@ -34,6 +45,7 @@ class PackageBuilder
   def add_package
     puts "#{@name} is being added to Koji"
     @tags.each do |tag|
+      puts tag
       system("koji add-pkg --owner=#{@owner} #{tag} #{@name}")
     end
     puts "#{@name} is being added to Koji - FINISHED"

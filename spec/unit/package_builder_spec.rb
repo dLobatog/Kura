@@ -5,11 +5,13 @@ describe 'package_builder' do
   context "file name should contain version" do
     it "should not accept the file if the filename is wrong" do
       wrong_name = "noversions.src.rpm"
+      lambda {
       InputFaker.with_fake_input(["owner","tag1 tag2"]) do
         output = fake_stdout { PackageBuilder.new(wrong_name).build } 
         output.should =~ /No specified version/
         # should exit? and not break previous test
       end
+      }.should raise_error SystemExit 
     end  
   end
 
