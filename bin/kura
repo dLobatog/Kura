@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# resolve bin path, ignoring symlinks
+require "pathname"
+bin_file = Pathname.new(__FILE__).realpath
+
+# add self to libpath
+$:.unshift File.expand_path("../../lib", bin_file)
+
+require 'trollop'
+opts = Trollop::options do
+  opt :owner, "Owner for your package or all of your packages in case you are building 
+             a directory",
+             :type => String
+  opt :tags, "Tags for your package or all of your packages in case you are building 
+             a directory", 
+             :type => :strings
+end
+
+require 'kura'
+Kura.new ARGV[0], opts[:owner], opts[:tags]
+
+
