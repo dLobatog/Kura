@@ -15,3 +15,6 @@ First, put them all in a directory.
 <pre> $ kura directory_with_packages --owner=someone --tags=tag1 tag2 </pre>
 If you don't specify any owner/tags, Kura will ask you for them for each of your packages.
                                             
+
+- Why is this called Kura? Because Kura stands for "sake brewery" in Japanese. 
+  Local Kuras dedicate special rooms to grow their Koji in the nicest rooms.
