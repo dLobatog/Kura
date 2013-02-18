@@ -1,4 +1,4 @@
-h1. Kura "!https://travis-ci.org/eLobato/Kura.png!":https://travis-ci.org/eLobato/Kura
+h1. Kura "!https://travis-ci.org/eLobato/Kura.png!":https://travis-ci.org/eLobato/Kura "!https://codeclimate.com/github/eLobato/Kura.png!":https://codeclimate.com/github/eLobato/Kura
 ====
 
 h2. Tag and build yum packages in Koji massively with ease
